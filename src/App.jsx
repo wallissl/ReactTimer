@@ -1,8 +1,20 @@
+import { HomePage } from './pages/home';
+import { Header } from './components/header'
+import React from 'react';
 
-function App() {
+function App() {  
+
+  return (
+
+    <React.Fragment>
+      
+
+      <Header />
+      <HomePage />
+
+    </React.Fragment>
+  )
   
-
-  return <h1> Hellow world, Wallis</h1>
 }
 
 export default App
