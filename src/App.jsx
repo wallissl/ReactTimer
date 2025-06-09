@@ -1,5 +1,4 @@
 import { HomePage } from './pages/home';
-import { Header } from './components/header'
 import React from 'react';
 import { Layout } from './template';
 
@@ -11,7 +10,6 @@ function App() {
       
       <Layout >
       
-        <Header />
         <HomePage />
 
       </Layout>

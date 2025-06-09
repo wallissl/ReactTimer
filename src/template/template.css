@@ -1,0 +1,15 @@
+.container--template {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px; 
+}
+
+.container--template-contents{
+    display: flex;
+    flex-direction: column;
+    background: var(--shape);
+    border-radius: 8px;
+    padding: 4px;
+    min-height: 500px;
+}

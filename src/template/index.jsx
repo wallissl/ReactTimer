@@ -1,6 +1,6 @@
 import { Header } from "../components/header";
 import PropTypes from "prop-types";
-
+import './template.css';
 
 export function Layout( { children }) {
 
@@ -8,9 +8,10 @@ export function Layout( { children }) {
 
         <>
             <Header/>
-            <main>
-
-                {children}
+            <main className="container--template">
+                <div className="container--template-contents">
+                    {children}
+                </div>
 
             </main>
 
