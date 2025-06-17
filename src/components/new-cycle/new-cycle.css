@@ -27,3 +27,6 @@
     font-size: 0.8rem;
 }
 
+.container--new-cycle input[type="number"]{
+    max-width: 72px;
+}

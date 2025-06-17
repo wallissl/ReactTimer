@@ -9,9 +9,13 @@ export function HomePage() {
         <div className="container--home"> 
             <NewCycle   />
             <Timer />
+            {/* <Button variant="secondary">Começar</Button> */}
+
             <Button>Começar</Button>
                 
         </div>
         
     );
 }
+
+export default HomePage;
