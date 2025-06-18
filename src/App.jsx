@@ -1,6 +1,7 @@
-import { HomePage } from './pages/home';
+/* import { HomePage } from './pages/home'; */
 import React from 'react';
 import { Layout } from './template';
+import { HistoryPage } from './pages/history';
 
 function App() {  
 
@@ -10,7 +11,8 @@ function App() {
       
       <Layout >
       
-        <HomePage />
+      {/*   <HomePage /> */}
+        <HistoryPage />
 
       </Layout>
 

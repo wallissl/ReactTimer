@@ -1,4 +1,7 @@
+import { Timer, ScrollText} from 'lucide-react';
+
 import './header.css';
+
 
 export function Header() {
     
@@ -7,8 +10,8 @@ export function Header() {
             <img src='/vite.svg' alt='Logo' />
 
             <nav>
-                <a href='#'>Home</a>
-                <a href='#'>Histórico</a>
+                <a href='#'><Timer size={24} /></a>
+                <a href='#'><ScrollText size={24} /></a>
           
             </nav>
        
