@@ -1,8 +1,22 @@
+import { HomePage } from './pages/home';
+import React from 'react';
+import { Layout } from './template';
 
-function App() {
+function App() {  
+
+  return (
+
+    <React.Fragment>
+      
+      <Layout >
+      
+        <HomePage />
+
+      </Layout>
+
+    </React.Fragment>
+  )
   
-
-  return <h1> Hellow world, Wallis</h1>
 }
 
 export default App
