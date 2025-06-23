@@ -1,4 +1,5 @@
 
+import { Status } from '../../components/status';
 import './history.css';
 
 export function HistoryPage() {
@@ -21,7 +22,11 @@ export function HistoryPage() {
                         <td>Conserto de débitos técnicos</td>
                         <td>25 minutos</td>
                         <td>Há cerca de 2 meses</td>
-                        <td>Concluído | Em andamento | Interrompido</td>
+                        <td>
+                            <Status>
+                                Concluído
+                            </Status>
+                        </td>
 
                     </tr>
 
