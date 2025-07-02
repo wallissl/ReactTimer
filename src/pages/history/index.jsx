@@ -27,7 +27,28 @@ export function HistoryPage() {
                                 Concluído
                             </Status>
                         </td>
+                    </tr>
 
+                    <tr>
+                        <td>Conserto de débitos técnicos</td>
+                        <td>25 minutos</td>
+                        <td>Há cerca de 2 meses</td>
+                        <td>
+                            <Status>
+                                Concluído
+                            </Status>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Conserto de débitos técnicos</td>
+                        <td>25 minutos</td>
+                        <td>Há cerca de 2 meses</td>
+                        <td>
+                            <Status>
+                                Concluído
+                            </Status>
+                        </td>
                     </tr>
 
                  </tbody>

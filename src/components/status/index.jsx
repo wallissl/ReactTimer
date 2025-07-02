@@ -3,7 +3,7 @@ import './status.css';
 
 export function Status({ variant = 'green', children}) {
 
-    return <span className='container--status'>{children}</span>
+    return <span className={`container--status ${variant}`}>{children}</span>
 
 }
 
