@@ -25,3 +25,7 @@
     color: var(--orange-500);
 
 }
+
+.container--header a.active{
+    color: var(--orange-500);
+}

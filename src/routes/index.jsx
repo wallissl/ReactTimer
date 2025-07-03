@@ -1,14 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import {HomePage} from "../pages/home";
 import { HistoryPage } from "../pages/history";
+import { Layout } from "../template";
 
 export const routes = createBrowserRouter([
     {
-        path: '/', // caminho da página,
-        elemente: <HomePage /> // componente que será renderizado.
-    },
-    {
-        path: '/historico',
-        elmente: <HistoryPage /> // caminho da página de histórico.
+        path: '/',
+        element: <Layout />,
+        children: [
+            {
+            path: '/', // caminho da página,
+            element: <HomePage /> // componente que será renderizado.
+            },
+            {
+            path: '/historico',
+            element: <HistoryPage /> // caminho da página de histórico.
+            }
+        ]
     }
 ])
