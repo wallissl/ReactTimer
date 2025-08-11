@@ -5,8 +5,8 @@ import { Layout } from "../template";
 
 export const routes = createBrowserRouter([
     {
-        path: '/',
-        element: <Layout />,
+        path: '/', // caminho
+        element: <Layout />, // componente que vai renderizar em tela
         children: [
             {
             path: '/', // caminho da página,

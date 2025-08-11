@@ -10,8 +10,8 @@ export function Header() {
             <img src='/vite.svg' alt='Logo' />
 
             <nav>
-                <NavLink to="/"><Timer size={24} /></NavLink>
-                <NavLink to='/historico'><ScrollText size={24} /></NavLink>
+                <NavLink to="/" end><Timer size={24} /></NavLink>
+                <NavLink to='/historico' end><ScrollText size={24} /></NavLink>
           
             </nav>
        
