@@ -36,11 +36,13 @@ export function HomePage() {
             startDate: new Date(),
 
         }
-        setCycles(newCycle);
+        setCycles( (prevCycles) => [...prevCycles, newCycle]);
         setActiveCycleId(id);
     }
 
     const activeCycle = cycles.find(cycle => cycle.id === activeCycleId); // Encontra o ciclo ativo com base no ID
+
+  
 
     return (
 
@@ -50,7 +52,7 @@ export function HomePage() {
             <FormProvider {...methods}>
             <NewCycle />
             </FormProvider>
-            <Timer />
+            <Timer activeCycle={activeCycle}/>
             <Button>Começar</Button>
                 
         </form>

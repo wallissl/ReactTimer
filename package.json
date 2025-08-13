@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "data-fns": "^1.1.0",
     "lucide-react": "^0.516.0",
     "prop-types": "^15.8.1",
     "react": "^19.1.0",
