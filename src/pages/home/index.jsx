@@ -1,17 +1,17 @@
-import { use, useState } from "react";
+
 import { Button } from "../../components/button";
 import { NewCycle } from "../../components/new-cycle";
 import { Timer } from "../../components/timer";
 import './home.css';
 import { useForm, FormProvider } from "react-hook-form";
+import { useCycle } from "../../contexts/cycle";
 
 
 export function HomePage() {
 
     const methods = useForm();
+    const { activeCycle, createNewCycle } = useCycle();
     const { handleSubmit} = methods;
-    const [cycles, setCycles] = useState([]);
-    const [activeCycleId, setActiveCycleId] = useState(null);
 
     /**
      * 
@@ -20,33 +20,13 @@ export function HomePage() {
      * @param {number} data.minutesAmount - Duração do ciclo em minutos 
      */
 
-    function createNewCycle({ minutesAmount, task}) {
-        // id: string;
-        // task: string;
-        // minutesAmount: number;
-        // startDate: Date;
-        // interruptedDate?: Date;
-        // finishedDate?: Date;
-        const id = String(new Date().getTime());
-
-        const newCycle = {
-            id,
-            task,
-            minutesAmount,
-            startDate: new Date(),
-
-        }
-        setCycles( (prevCycles) => [...prevCycles, newCycle]);
-        setActiveCycleId(id);
-    }
-
-    const activeCycle = cycles.find(cycle => cycle.id === activeCycleId); // Encontra o ciclo ativo com base no ID
-
-  
+    function onSubmit({ minutesAmount, task}) {
+        createNewCycle({ minutesAmount, task});
+    }  
 
     return (
 
-        <form className="container--home" onSubmit={handleSubmit(createNewCycle)}>
+        <form className="container--home" onSubmit={handleSubmit(onSubmit)}>
             {/* <input type="text" {...register('name', { required: true })} /> // input para o nome do ciclo */}
 
             <FormProvider {...methods}>
