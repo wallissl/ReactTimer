@@ -9,10 +9,25 @@ export const CycleContext = createContext({
     createNewCycle: () => {},
 });
 
+const CYCLES_KEY_LOCALSTORAGE = '@React-timer:cycles-state-1.0.0'
+const ACTIVE_CYCLE_LOCALSTORAGE = '@React-timer:active-cycle-1.0.0'
+
 export function CycleProvider({ children }){
 
-    const [cycles, setCycles] = useState([]);
-        const [activeCycleId, setActiveCycleId] = useState(null);
+    const [cycles, setCycles] = useState(() => {
+        const cycleStorage = localStorage.getItem(CYCLES_KEY_LOCALSTORAGE);
+
+        if(cycleStorage) {
+            return JSON.parse(cycleStorage);
+        }
+        return [];
+    });
+        const [activeCycleId, setActiveCycleId] = useState(() => {
+            const activeCycleStorage = localStorage.getItem(ACTIVE_CYCLE_LOCALSTORAGE);
+
+           return activeCycleStorage;
+            
+        });
     
         /**
          * 
@@ -37,8 +52,17 @@ export function CycleProvider({ children }){
                 startDate: new Date(),
     
             }
-            setCycles( (prevCycles) => [...prevCycles, newCycle]);
+
+            setCycles((prevCycles) => {
+            let newCycleState = [...prevCycles, newCycle]
+
+            localStorage.setItem(CYCLES_KEY_LOCALSTORAGE, JSON.stringify(newCycleState))
+            
+            return newCycleState
+            })
+
             setActiveCycleId(id);
+            localStorage.setItem(ACTIVE_CYCLE_LOCALSTORAGE, id);
         }
     
         const activeCycle = cycles.find(cycle => cycle.id === activeCycleId); // Encontra o ciclo ativo com base no ID

@@ -10,7 +10,7 @@ import { useCycle } from "../../contexts/cycle";
 export function HomePage() {
 
     const methods = useForm();
-    const { activeCycle, createNewCycle } = useCycle();
+    const { createNewCycle } = useCycle();
     const { handleSubmit} = methods;
 
     /**
@@ -32,7 +32,7 @@ export function HomePage() {
             <FormProvider {...methods}>
             <NewCycle />
             </FormProvider>
-            <Timer activeCycle={activeCycle}/>
+            <Timer />
             <Button>Começar</Button>
                 
         </form>

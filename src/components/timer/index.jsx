@@ -3,8 +3,11 @@ import { differenceInSeconds, interval } from 'date-fns';
 
 import { useState, useEffect } from 'react';
 import './timer.css';
+import { useCycle } from '../../contexts/cycle';
 
-export function Timer({ activeCycle}) {
+export function Timer() {
+
+    const { activeCycle } = useCycle()
 
     // activeCycle é um objeto que contém informações sobre o ciclo ativo, como a tarefa e a duração
 
