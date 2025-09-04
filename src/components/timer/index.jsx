@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { differenceInSeconds, interval } from 'date-fns';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './timer.css';
 import { useCycle } from '../../contexts/cycle';
 
 export function Timer() {
 
-    const { activeCycle } = useCycle()
+    const { activeCycle, markCurrentCycleAsFinished} = useCycle()
 
     // activeCycle é um objeto que contém informações sobre o ciclo ativo, como a tarefa e a duração
 
@@ -30,6 +30,26 @@ export function Timer() {
     const minutes = String(minutesAmount).padStart(2, '0'); // Formata os minutos para ter 2 dígitos
     const seconds = String(secondsAmount).padStart(2, '0')
 
+    // áudio
+
+   const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio('/audios/countdown.mp3');
+    }
+  }, []);
+
+  function playAudio() {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0; // reinicia o áudio sempre do começo
+      audioRef.current.play().catch((err) => {
+        console.warn("Reprodução bloqueada:", err);
+      });
+    }
+  }
+    // Finalizar o áudio
+
     useEffect(() => {
         // WEB API - SET INTERVAL
         
@@ -39,6 +59,7 @@ export function Timer() {
                 const secondsDifference = differenceInSeconds(new Date(), new Date(activeCycle.startDate));
 
                 if(secondsDifference >= totalSeconds) {
+                    markCurrentCycleAsFinished();
                     setAmountSecondsPassed(totalSeconds);
                     clearInterval(intervalId); // Limpa o intervalo quando o ciclo termina
                 } else {
@@ -49,8 +70,25 @@ export function Timer() {
         return () => {
             clearInterval(intervalId);
         }
-    }, [activeCycle, totalSeconds])
+    }, [activeCycle, totalSeconds, markCurrentCycleAsFinished])
         
+    // Use Effect para chamar o áudio
+    useEffect(() => {
+        console.log(minutesAmount, secondsAmount)
+        if(minutesAmount === 0 && secondsAmount === 3) {
+            console.log('chamar audio')
+            playAudio();
+        }
+
+    }, [minutesAmount, secondsAmount]);
+
+
+    // Atualização do título da página
+    useEffect(() => {
+        if (activeCycle) {
+            document.title = `${minutes}:${seconds} - ${activeCycle.task}`;
+        }
+    }, [activeCycle, minutes, seconds]);
 
     return (
 
@@ -67,6 +105,6 @@ export function Timer() {
     )
 }
 
-Timer.PropTypes = {
+Timer.propTypes = {
     activeCycle: PropTypes.object,
 }

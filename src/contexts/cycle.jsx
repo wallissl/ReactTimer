@@ -80,7 +80,7 @@ export function CycleProvider({ children }){
             setCycles(newStateCycle);
             setActiveCycleId(null);
             // Atualização do localStorage
-            localStorage.setItem(newStateCycle);
+            localStorage.setItem(CYCLES_KEY_LOCALSTORAGE, JSON.stringify(newStateCycle));
             localStorage.removeItem(ACTIVE_CYCLE_LOCALSTORAGE);
 
         }

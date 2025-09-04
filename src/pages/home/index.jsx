@@ -5,13 +5,19 @@ import { Timer } from "../../components/timer";
 import './home.css';
 import { useForm, FormProvider } from "react-hook-form";
 import { useCycle } from "../../contexts/cycle";
+import { Hand, Play } from "lucide-react";
 
 
 export function HomePage() {
 
-    const methods = useForm();
-    const { createNewCycle } = useCycle();
-    const { handleSubmit} = methods;
+    const methods = useForm({
+        defaultValues: {
+            task: '',
+            minutesAmount: 0,
+        }
+    });
+    const { createNewCycle, activeCycle } = useCycle();
+    const { handleSubmit, reset} = methods;
 
     /**
      * 
@@ -20,8 +26,10 @@ export function HomePage() {
      * @param {number} data.minutesAmount - Duração do ciclo em minutos 
      */
 
-    function onSubmit({ minutesAmount, task}) {
-        createNewCycle({ minutesAmount, task});
+    function onSubmit(data) {
+        console.log('novo')
+        createNewCycle(data);
+        reset();
     }  
 
     return (
@@ -33,7 +41,17 @@ export function HomePage() {
             <NewCycle />
             </FormProvider>
             <Timer />
-            <Button>Começar</Button>
+
+                {
+                    activeCycle ? (
+                        <Button type="button" variant="secondary">
+                            <Hand size={24} />Interromper
+                        </Button>
+                    ) : (
+                        <Button type="submit">
+                            <Play size={24} />Começar</Button>
+                    )
+                }
                 
         </form>
         

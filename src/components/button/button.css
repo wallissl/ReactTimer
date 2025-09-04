@@ -5,7 +5,11 @@
     color: var(--text);
     border: none;
     border-radius: 8px;
-    font-weight: bold;;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;;
 }
 
 .container--button.secondary{
