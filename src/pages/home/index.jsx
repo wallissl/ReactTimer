@@ -8,6 +8,7 @@ import { useCycle } from "../../contexts/cycle";
 import { Hand, Play } from "lucide-react";
 
 
+
 export function HomePage() {
 
     const methods = useForm({
@@ -16,7 +17,7 @@ export function HomePage() {
             minutesAmount: 0,
         }
     });
-    const { createNewCycle, activeCycle } = useCycle();
+    const { createNewCycle, activeCycle, interruptedCurrentCycle } = useCycle();
     const { handleSubmit, reset} = methods;
 
     /**
@@ -44,7 +45,7 @@ export function HomePage() {
 
                 {
                     activeCycle ? (
-                        <Button type="button" variant="secondary">
+                        <Button type="button" variant="secondary" onClick={interruptedCurrentCycle}>
                             <Hand size={24} />Interromper
                         </Button>
                     ) : (

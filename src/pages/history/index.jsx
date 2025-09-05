@@ -1,8 +1,12 @@
 
 import { Status } from '../../components/status';
+import { useCycle } from '../../contexts/cycle';
 import './history.css';
 
+
 export function HistoryPage() {
+    const { cycles } = useCycle();
+
     return (
 
         <div className="container--history"> 
@@ -18,38 +22,17 @@ export function HistoryPage() {
                     </tr>
                  </thead>
                  <tbody>
-                    <tr>
-                        <td>Conserto de débitos técnicos</td>
-                        <td>25 minutos</td>
-                        <td>Há cerca de 2 meses</td>
-                        <td>
-                            <Status>
-                                Concluído
-                            </Status>
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td>Conserto de débitos técnicos</td>
-                        <td>25 minutos</td>
-                        <td>Há cerca de 2 meses</td>
-                        <td>
-                            <Status>
-                                Concluído
-                            </Status>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Conserto de débitos técnicos</td>
-                        <td>25 minutos</td>
-                        <td>Há cerca de 2 meses</td>
-                        <td>
-                            <Status>
-                                Concluído
-                            </Status>
-                        </td>
-                    </tr>
+                    {
+                        cycles.map((cycle) => ( 
+                            <tr key={cycle.id}>
+                                <td>{cycle.task}</td>
+                                <td>{`${cycle.minutesAmount} minutos`}</td>
+                                <td>Há cerca de 2 meses</td>
+                                <td><Status> Concluído </Status></td> 
+                            </tr>
+                        ))                        
+                    }
 
                  </tbody>
             </table>

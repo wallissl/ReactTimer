@@ -7,7 +7,9 @@ export const CycleContext = createContext({
     activeCycleId: null,
     activeCycle: undefined,
     createNewCycle: () => {},
+    interruptedCurrentCycle: () => {},
     markCurrentCycleAsFinished: () => {},
+
 });
 
 const CYCLES_KEY_LOCALSTORAGE = '@React-timer:cycles-state-1.0.0'
@@ -84,10 +86,40 @@ export function CycleProvider({ children }){
             localStorage.removeItem(ACTIVE_CYCLE_LOCALSTORAGE);
 
         }
+
+        function interruptedCurrentCycle() {
+            const newStateCycle = cycles.map(cycle => {
+                if(cycle.id === activeCycleId) {
+                    return {
+                        ...cycle,
+                        interrupteDate: new Date()
+                    }
+                }
+                return cycle;
+            })
+            // Atualizando os estados
+            setCycles(newStateCycle);
+            setActiveCycleId(null);
+            // Atualização do localStorage
+            localStorage.setItem(CYCLES_KEY_LOCALSTORAGE, JSON.stringify(newStateCycle));
+            localStorage.removeItem(ACTIVE_CYCLE_LOCALSTORAGE);
+        }
     
         const activeCycle = cycles.find(cycle => cycle.id === activeCycleId); // Encontra o ciclo ativo com base no ID
 
-    return <CycleContext.Provider value={{ cycles, activeCycleId, activeCycle, createNewCycle, markCurrentCycleAsFinished }}>{children}</CycleContext.Provider>
+    return (
+        <CycleContext.Provider
+            value={{
+                cycles,
+                activeCycleId,
+                activeCycle,
+                createNewCycle,
+                markCurrentCycleAsFinished,
+                interruptedCurrentCycle
+            }}>
+            {children}
+        </CycleContext.Provider>
+    )
 }
 
 CycleProvider.propTypes = {
