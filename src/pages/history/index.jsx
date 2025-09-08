@@ -1,7 +1,8 @@
-
+import { ptBR } from 'date-fns/locale';
 import { Status } from '../../components/status';
 import { useCycle } from '../../contexts/cycle';
 import './history.css';
+import { formatDistanceToNow } from 'date-fns';
 
 
 export function HistoryPage() {
@@ -28,8 +29,33 @@ export function HistoryPage() {
                             <tr key={cycle.id}>
                                 <td>{cycle.task}</td>
                                 <td>{`${cycle.minutesAmount} minutos`}</td>
-                                <td>Há cerca de 2 meses</td>
-                                <td><Status> Concluído </Status></td> 
+                                <td>
+                                    {formatDistanceToNow(new Date(cycle.startDate),{
+                                        addSuffix: true,
+                                        locale: ptBR
+                                    })}
+                                </td>
+                                <td>
+                                    {
+                                        cycle.finishedDate && (
+                                            <Status> Concluído </Status>
+                                        )
+                                    }
+
+                                    {
+                                        cycle.interruptedDate && (
+                                            <Status variant='pink'> Interrompido </Status>
+                                        )
+                                    }
+
+                                    {
+                                        !cycle.finishedDate && !cycle.interruptedDate && (
+                                            <Status variant='orange'> Em andamento </Status>
+                                        )
+                                    }
+
+                                </td> 
+
                             </tr>
                         ))                        
                     }

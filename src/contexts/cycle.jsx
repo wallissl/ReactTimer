@@ -92,7 +92,7 @@ export function CycleProvider({ children }){
                 if(cycle.id === activeCycleId) {
                     return {
                         ...cycle,
-                        interrupteDate: new Date()
+                        interruptedDate: new Date()
                     }
                 }
                 return cycle;
