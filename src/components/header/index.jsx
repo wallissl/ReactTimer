@@ -6,7 +6,7 @@ export function Header() {
     
     return(
         <header className='container--header'>
-            <img src='/src/assets/react.svg' className="logo react" alt="React logo" />
+            <img src='react.svg' className="logo react" alt="React logo" />
 
             <nav>
                 <NavLink to="/" end><Timer size={24} /></NavLink>
