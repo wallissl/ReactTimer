@@ -1,12 +1,47 @@
-# React + Vite
+# ReactTimer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um temporizador simples feito em **React + Vite**  
+Permite iniciar, pausar e resetar o tempo, além de registrar um **histórico** de ciclos concluídos, interrompidos ou em andamento.  
+Projeto desenvolvido para praticar React e organizar melhor a estrutura de um app com hooks e contexto.
 
-Currently, two official plugins are available:
+[![](https://img.shields.io/badge/demo-online-green)](https://endearing-torte-558c18.netlify.app/)
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Capturas
 
-## Expanding the ESLint configuration
+<img width="1920" height="1080" alt="ReactTimerArt" src="https://github.com/user-attachments/assets/2095db0b-41d7-4dfc-9004-e73d4bdc41cd" />
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+---
+
+## Vídeo
+
+https://github.com/user-attachments/assets/54f83b70-2425-4d9d-867f-bed58390c9da
+
+---
+
+## Tecnologias
+
+- React  
+- Vite  
+- CSS puro / ou framework de estilo se você usar  
+- ESLint  
+- Node.js
+
+---
+
+## Como rodar
+
+### Pré-requisitos
+
+- Node.js instalado (versão ≥ 14)  
+- npm ou yarn  
+
+### Passos
+
+```bash
+git clone https://github.com/wallissl/ReactTimer.git
+cd ReactTimer
+npm install   # ou `yarn`
+npm run dev   # inicia em modo de desenvolvimento
+npm run build # gera versão para produção
