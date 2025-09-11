@@ -9,15 +9,21 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: var(--table-header);    
+    background: var(--table-header);
+    
 }
 
 .container--status.green::before {
     background: var(--green-500);
+    margin: 0 5px 1px  0;
 }
+
 .container--status.pink::before {
     background: var(--pink-800);
+    margin: 0 5px 1px  0;
 }
+
 .container--status.orange::before {
     background: var(--orange-500);
+    margin: 0 5px 1px  0;
 }

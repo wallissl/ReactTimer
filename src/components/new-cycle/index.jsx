@@ -4,7 +4,6 @@ import './new-cycle.css'
 export function NewCycle() {
     const { register, formState } = useFormContext();
 
-
     return (
         <div className='container--new-cycle'>
         
@@ -12,7 +11,9 @@ export function NewCycle() {
 
             <div className='container--input-form'>
 
-                <input type="text" id="task" placeholder='Criar timer' {...register('task',
+                <input
+                    list='list-ideas'
+                    type="text" id="task" placeholder='Criar timer' {...register('task',
                     { 
                         required: {
                             value: true,
@@ -35,12 +36,17 @@ export function NewCycle() {
            
             </div>
 
+            <datalist id='list-ideas'>
+                <option value={'Tempo de estudos'} />
+                <option value={'Tempo de pesquisas'} />
+                <option value={'Tempo de pausa'} />
+            </datalist>
+
             <label htmlFor="minutesAmount">durante</label>
             <input type="number" id="minutesAmount" {...register('minutesAmount', { valueAsNumber: true })}/>
 
             <span>minutos.</span>
             
-        
         </div>
     )
 }

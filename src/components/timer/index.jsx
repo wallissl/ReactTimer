@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { differenceInSeconds, interval } from 'date-fns';
-
+import { differenceInSeconds } from 'date-fns';
 import { useState, useEffect, useRef } from 'react';
 import './timer.css';
 import { useCycle } from '../../contexts/cycle';
@@ -81,7 +80,6 @@ export function Timer() {
         }
 
     }, [minutesAmount, secondsAmount]);
-
 
     // Atualização do título da página
     useEffect(() => {

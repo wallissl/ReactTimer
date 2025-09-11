@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
 
-
 export const CycleContext = createContext({
     cycles: [],
     activeCycleId: null,
@@ -53,7 +52,6 @@ export function CycleProvider({ children }){
                 task,
                 minutesAmount,
                 startDate: new Date(),
-    
             }
 
             setCycles((prevCycles) => {
@@ -73,7 +71,6 @@ export function CycleProvider({ children }){
             const newStateCycle = cycles.map(cycle => {
                 if(cycle.id === activeCycleId) {
                     return { ...cycle, finishedDate: new Date()
-
                     }
                 }
                 return cycle;
@@ -84,7 +81,6 @@ export function CycleProvider({ children }){
             // Atualização do localStorage
             localStorage.setItem(CYCLES_KEY_LOCALSTORAGE, JSON.stringify(newStateCycle));
             localStorage.removeItem(ACTIVE_CYCLE_LOCALSTORAGE);
-
         }
 
         function interruptedCurrentCycle() {
@@ -104,7 +100,7 @@ export function CycleProvider({ children }){
             localStorage.setItem(CYCLES_KEY_LOCALSTORAGE, JSON.stringify(newStateCycle));
             localStorage.removeItem(ACTIVE_CYCLE_LOCALSTORAGE);
         }
-    
+        
         const activeCycle = cycles.find(cycle => cycle.id === activeCycleId); // Encontra o ciclo ativo com base no ID
 
     return (

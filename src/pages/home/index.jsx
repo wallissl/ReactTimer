@@ -17,7 +17,7 @@ export function HomePage() {
         }
     });
     const { createNewCycle, activeCycle, interruptedCurrentCycle } = useCycle();
-    const { handleSubmit, reset} = methods;
+    const { handleSubmit, reset, watch} = methods;
 
     /**
      * 
@@ -30,7 +30,10 @@ export function HomePage() {
         console.log('novo')
         createNewCycle(data);
         reset();
-    }  
+    }
+
+    const task = watch('task');
+    const isSubmitDisabled = !task;
 
     return (
 
@@ -48,7 +51,7 @@ export function HomePage() {
                             <Hand size={24} />Interromper
                         </Button>
                     ) : (
-                        <Button type="submit">
+                        <Button type="submit" disabled={isSubmitDisabled}>
                             <Play size={24} />Começar</Button>
                     )
                 }

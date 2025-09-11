@@ -15,3 +15,8 @@
 .container--button.secondary{
     background: var(--pink-800);
 }
+
+.container--button:disabled{
+    opacity: 0.7;
+    cursor: not-allowed;
+}

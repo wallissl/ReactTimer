@@ -4,7 +4,6 @@ import { useCycle } from '../../contexts/cycle';
 import './history.css';
 import { formatDistanceToNow } from 'date-fns';
 
-
 export function HistoryPage() {
     const { cycles } = useCycle();
 
@@ -64,6 +63,5 @@ export function HistoryPage() {
             </table>
 
         </div>
-        
     );
 }

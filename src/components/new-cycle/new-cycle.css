@@ -19,7 +19,6 @@
     font-size: 1.125rem;
     color: var(--text);
     padding: 0 .5rem;
-
 }
 
 .container--new-cycle input::placeholder{
@@ -40,5 +39,4 @@
     font-size: 0.75rem;
     position: absolute;
     bottom: -20px;
-
 }
