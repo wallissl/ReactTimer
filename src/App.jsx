@@ -1,22 +1,17 @@
-import { HomePage } from './pages/home';
-import React from 'react';
-import { Layout } from './template';
+import { RouterProvider } from 'react-router-dom'; // É necessário importar o RouterProvider para usar as rotas definidas no arquivo routes.js
+import { routes } from './routes';
+import { CycleProvider } from './contexts/cycle'
 
 function App() {  
 
   return (
+    
+    <CycleProvider>
 
-    <React.Fragment>
-      
-      <Layout >
-      
-        <HomePage />
-
-      </Layout>
-
-    </React.Fragment>
+      <RouterProvider router={routes} />
+    
+    </CycleProvider>
   )
-  
 }
 
 export default App

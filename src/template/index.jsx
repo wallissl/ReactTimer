@@ -1,8 +1,8 @@
 import { Header } from "../components/header";
-import PropTypes from "prop-types";
 import './template.css';
+import {Outlet} from 'react-router-dom';
 
-export function Layout( { children }) {
+export function Layout() {
 
     return (
 
@@ -10,7 +10,7 @@ export function Layout( { children }) {
             <Header/>
             <main className="container--template">
                 <div className="container--template-contents">
-                    {children}
+                    <Outlet />
                 </div>
 
             </main>
@@ -19,7 +19,3 @@ export function Layout( { children }) {
     )
 }
 
-Layout.PropTypes = {
-    title: PropTypes.string,
-    children: PropTypes.node,
-};
